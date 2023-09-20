@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
@@ -35,32 +36,34 @@ class MainActivity2 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-                val data = intent.getStringExtra("TextField")
-                Column(
-                    modifier = Modifier.padding(0.dp, 300.dp),
-                    verticalArrangement = Arrangement.SpaceEvenly,
-                    horizontalAlignment = Alignment.Start
-                )
-                {
-                    Row {
-                        Text(
-                            text = "Значение",
-                            modifier = Modifier.height(20.dp),
-                        )
-                    }
-                }
-                Column(
-                    modifier = Modifier.padding(150.dp, 270.dp),
-                    verticalArrangement = Arrangement.SpaceEvenly,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    TextField(
-                        modifier = Modifier.width(70.dp),
-                        value = data.toString(),
-                        onValueChange = {},
-                        label = { Text(text = "") }
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colorScheme.background
+            ) {
+
+            }
+            val data = intent.getStringExtra("TextField")
+            Column(
+                modifier = Modifier.offset(10.dp, 100.dp),
+            )
+            {
+                Row {
+                    Text(
+                        text = "Значение",
+                        modifier = Modifier.height(20.dp),
                     )
                 }
+            }
+            Column(
+                modifier = Modifier.offset(150.dp, 90.dp),
+            ) {
+                TextField(
+                    modifier = Modifier.width(70.dp),
+                    value = data.toString(),
+                    onValueChange = {},
+                    label = { Text(text = "") }
+                )
+            }
         }
     }
 }
@@ -69,15 +72,13 @@ class MainActivity2 : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier) {
 
     Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceEvenly,
-        horizontalAlignment = Alignment.Start
+        modifier = Modifier.offset(10.dp, 100.dp),
     )
     {
         Row {
             Text(
                 text = "Значение",
-                modifier = Modifier.height(20.dp),
+
             )
         }
     }

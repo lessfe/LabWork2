@@ -12,8 +12,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -26,6 +29,9 @@ import androidx.compose.ui.Modifier
 
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.lessons.ui.theme.LessonsTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,32 +39,34 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colorScheme.background
+            ) {
+
+            }
+
             var text by rememberSaveable {
                 mutableStateOf("0.0")
             }
-
             var text_1 by rememberSaveable {
                 mutableStateOf("0.0")
             }
-            val intent = Intent(this@MainActivity, MainActivity2::class.java)
             Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalAlignment = Alignment.Start,
+                modifier = Modifier.offset(10.dp, 150.dp),
             ) {
                 Button(onClick = {
                     val sumNumPl = text.toFloat() + text_1.toFloat()
                     val str_sum = sumNumPl.toString()
-                    text = str_sum
+                    text_1 = str_sum
                 }) {
                     Text(text = "Добавить")
                 }
             }
             Column(
-                modifier = Modifier.padding(150.dp, 330.dp),
-                verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalAlignment = Alignment.CenterHorizontally
+                modifier = Modifier.offset(150.dp, 90.dp),
             ) {
                 TextField(
                     modifier = Modifier.width(70.dp),
@@ -71,23 +79,19 @@ class MainActivity : ComponentActivity() {
 
             }
             Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalAlignment = Alignment.End,
+                modifier = Modifier.offset(260.dp, 150.dp),
             ) {
                 Button(onClick = {
-                    val sumNumPl = text.toFloat() - text_1.toFloat()
+                    val sumNumPl = text_1.toFloat() - text.toFloat()
                     val str_sum = sumNumPl.toString()
-                    text = str_sum
+                    text_1 = str_sum
                 }) {
                     Text(text = "Отнять")
                 }
 
             }
             Column(
-                modifier = Modifier.padding(0.dp, 300.dp),
-                verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalAlignment = Alignment.Start
+                modifier = Modifier.offset(10.dp, 100.dp),
             )
             {
                 Row {
@@ -98,9 +102,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
             Column(
-                modifier = Modifier.padding(150.dp, 270.dp),
-                verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalAlignment = Alignment.CenterHorizontally
+                modifier = Modifier.offset(150.dp, 150.dp),
             )
             {
                 TextField(
@@ -114,10 +116,11 @@ class MainActivity : ComponentActivity() {
             }
 
             Column(
-                modifier = Modifier.offset(260.dp, 280.dp),
+                modifier = Modifier.offset(260.dp, 90.dp),
 
                 ) {
                 Button(onClick = {
+                    val intent = Intent(this@MainActivity, MainActivity2::class.java)
                     intent.putExtra("TextField", text)
                     startActivity(intent)
                 }) {
@@ -131,20 +134,22 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun Greeting(name: String, modifier: Modifier = Modifier) {
+        Surface(
+            modifier = Modifier.fillMaxSize()
+        ) {
+
+        }
+
 
         Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalAlignment = Alignment.Start,
+            modifier = Modifier.offset(10.dp, 150.dp),
         ) {
             Button(onClick = {}) {
                 Text(text = "Добавить")
             }
         }
         Column(
-            modifier = Modifier.padding(150.dp, 330.dp),
-            verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalAlignment = Alignment.CenterHorizontally
+            modifier = Modifier.offset(150.dp, 90.dp),
         ) {
             TextField(
                 modifier = Modifier.width(70.dp),
@@ -155,18 +160,15 @@ class MainActivity : ComponentActivity() {
 
         }
         Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalAlignment = Alignment.End,
+            modifier = Modifier.offset(260.dp, 150.dp),
+
         ) {
             Button(onClick = {}) {
                 Text(text = "Отнять")
             }
         }
         Column(
-            modifier = Modifier.padding(0.dp, 300.dp),
-            verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalAlignment = Alignment.Start
+            modifier = Modifier.offset(10.dp, 100.dp),
         )
         {
             Row {
@@ -177,9 +179,7 @@ class MainActivity : ComponentActivity() {
             }
         }
         Column(
-            modifier = Modifier.padding(150.dp, 270.dp),
-            verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalAlignment = Alignment.CenterHorizontally
+            modifier = Modifier.offset(150.dp, 150.dp),
         )
         {
             TextField(
@@ -190,9 +190,11 @@ class MainActivity : ComponentActivity() {
             )
         }
         Column(
-            modifier = Modifier.offset(260.dp, 280.dp),
+            modifier = Modifier.offset(260.dp, 90.dp),
             ) {
-            Button(onClick = {}) {
+            Button(onClick = {
+
+            }) {
                 Text(text = "Перейти")
             }
         }
