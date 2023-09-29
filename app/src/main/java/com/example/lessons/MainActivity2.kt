@@ -49,7 +49,7 @@ class MainActivity2 : ComponentActivity() {
             {
                 Row {
                     Text(
-                        text = "Значение",
+                        text = resources.getText(R.string.Value).toString(),
                         modifier = Modifier.height(20.dp),
                     )
                 }

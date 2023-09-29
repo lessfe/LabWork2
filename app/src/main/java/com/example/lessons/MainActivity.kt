@@ -22,6 +22,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -96,7 +97,7 @@ class MainActivity : ComponentActivity() {
             {
                 Row {
                     Text(
-                        text = "Значение",
+                        text = resources.getText(R.string.Value).toString(),
                         modifier = Modifier.height(20.dp),
                     )
                 }
@@ -121,7 +122,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                 Button(onClick = {
                     val intent = Intent(this@MainActivity, MainActivity2::class.java)
-                    intent.putExtra("TextField", text)
+                    intent.putExtra("TextField", text_1)
                     startActivity(intent)
                 }) {
                     Text(text = "Перейти")

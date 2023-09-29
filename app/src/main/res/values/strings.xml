@@ -48,4 +48,5 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_main3">MainActivity3</string>
+    <string name="Value">Значение</string>
 </resources>
